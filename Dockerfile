@@ -137,6 +137,3 @@ COPY rootfs/ /
 ENTRYPOINT ["/init"]
 CMD []
 
-## NOTE:
-## *) Run vim then >> :PluginInstall
-## *) Update plugin vim (vundle) >> :PluginUpdate
