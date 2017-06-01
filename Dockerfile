@@ -11,8 +11,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     TERM=xterm \
     CONSUL_VERSION=0.8.3 \
     CONSULUI_VERSION=0.8.3 \
-    CONSULTEMPLATE_VERSION=0.18.3 \
-    RUBY_VERSION=2.4.1
+    CONSULTEMPLATE_VERSION=0.18.3 
 
 #-----------------------------------------------------------------------------
 # Set Group & User for 'consul'
