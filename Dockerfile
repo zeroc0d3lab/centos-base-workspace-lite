@@ -11,7 +11,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=1 \
     TERM=xterm \
     CONSUL_VERSION=0.8.3 \
     CONSULUI_VERSION=0.8.3 \
-    CONSULTEMPLATE_VERSION=0.18.3 
+    CONSULTEMPLATE_VERSION=0.18.3
 
 #-----------------------------------------------------------------------------
 # Set Group & User for 'consul'
@@ -62,7 +62,9 @@ RUN yum -y install \
          libtool \
          sqlite-devel \
 
-
+#-----------------------------------------------------------------------------
+# Install Consul Library
+#-----------------------------------------------------------------------------
     && curl -sSL https://releases.hashicorp.com/consul/${CONSULUI_VERSION}/consul_${CONSULUI_VERSION}_linux_amd64.zip -o /tmp/consul.zip \
     && unzip /tmp/consul.zip -d /bin \
     && rm /tmp/consul.zip \
@@ -72,7 +74,7 @@ RUN yum -y install \
     && rm /tmp/consului.zip \
     && curl -sSL https://releases.hashicorp.com/consul-template/${CONSULTEMPLATE_VERSION}/consul-template_${CONSULTEMPLATE_VERSION}_linux_amd64.zip -o /tmp/consul-template.zip \
     && unzip /tmp/consul-template.zip -d /bin \
-    && rm -f /tmp/consul-template.zip \
+    && rm -f /tmp/consul-template.zip
 
 #-----------------------------------------------------------------------------
 # Clean Up All Cache
@@ -135,4 +137,3 @@ COPY rootfs/ /
 #-----------------------------------------------------------------------------
 ENTRYPOINT ["/init"]
 CMD []
-
