@@ -75,7 +75,7 @@ RUN yum -y install \
     && rm /tmp/consului.zip \
     && curl -sSL https://releases.hashicorp.com/consul-template/${CONSULTEMPLATE_VERSION}/consul-template_${CONSULTEMPLATE_VERSION}_linux_amd64.zip -o /tmp/consul-template.zip \
     && unzip /tmp/consul-template.zip -d /bin \
-    && rm -f /tmp/consul-template.zip
+    && rm -f /tmp/consul-template.zip \
 
 #-----------------------------------------------------------------------------
 # Clean Up All Cache
