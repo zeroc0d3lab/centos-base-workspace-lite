@@ -62,7 +62,7 @@ RUN yum -y install \
          libtool \
          sqlite-devel \
          fontconfig \
-         
+
 #-----------------------------------------------------------------------------
 # Install Consul Library
 #-----------------------------------------------------------------------------
@@ -133,7 +133,7 @@ RUN mkdir -p /root/.fonts \
     && cp /root/.fonts/PowerlineSymbols.otf /usr/share/fonts/PowerlineSymbols.otf \
     && cp /root/.config/fontconfig/conf.d/10-powerline-symbols.conf /etc/fonts/conf.d/10-powerline-symbols.conf \
     && ./usr/bin/fc-cache -vf /root/.fonts/ \
-    && ./usr/bin/fc-cache -vf /usr/share/fonts 
+    && ./usr/bin/fc-cache -vf /usr/share/fonts
 
 #-----------------------------------------------------------------------------
 # Download & Install
@@ -147,6 +147,12 @@ RUN git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git /
 #-----------------------------------------------------------------------------
 COPY rootfs/ /
 
+#-----------------------------------------------------------------------------
+# Setup TrueColors (Terminal)
+#-----------------------------------------------------------------------------
+RUN cd /root/colors \
+    && /bin/sh 24-bit-colors.sh
+    
 #-----------------------------------------------------------------------------
 # Run Init Docker Container
 #-----------------------------------------------------------------------------
