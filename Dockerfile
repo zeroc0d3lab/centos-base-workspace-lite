@@ -145,8 +145,8 @@ RUN git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git /
 #-----------------------------------------------------------------------------
 # Setup TrueColors (Terminal)
 #-----------------------------------------------------------------------------
-COPY ./rootfs/root/colors/24-bit-colors.sh /root/colors/24-bit-colors.sh
-RUN ./root/colors/24-bit-colors.sh
+COPY ./rootfs/root/colors/24-bit-color.sh /root/colors/24-bit-color.sh
+RUN ./root/colors/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
 # Finalize (reconfigure)
