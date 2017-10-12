@@ -12,7 +12,7 @@ ENV PATH_WORKSPACE=/home/docker
 RUN mkdir -p ${PATH_WORKSPACE} \
     && groupadd docker \
     && useradd -r -g docker docker \
-    && usermod -aG docker docker \
+    && usermod -aG root docker \
     && chown -R docker:docker ${PATH_WORKSPACE} \
     && mkdir -p ${PATH_WORKSPACE}/git-shell-commands \
     && chmod 755 ${PATH_WORKSPACE}/git-shell-commands
