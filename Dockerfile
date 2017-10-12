@@ -4,18 +4,19 @@ MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 #-----------------------------------------------------------------------------
 # Set Environment
 #-----------------------------------------------------------------------------
-ENV PATH_WORKSPACE=/home/docker
+ENV PATH_HOME=/home/docker \
+    PATH_WORKSPACE=/home/docker/workspace
 
 #-----------------------------------------------------------------------------
 # Set Group & User for 'docker'
 #-----------------------------------------------------------------------------
-RUN mkdir -p ${PATH_WORKSPACE} \
+RUN mkdir -p ${PATH_HOME} \
     && groupadd docker \
     && useradd -r -g docker docker \
     && usermod -aG root docker \
-    && chown -R docker:docker ${PATH_WORKSPACE} \
-    && mkdir -p ${PATH_WORKSPACE}/git-shell-commands \
-    && chmod 755 ${PATH_WORKSPACE}/git-shell-commands
+    && chown -R docker:docker ${PATH_HOME} \
+    && mkdir -p ${PATH_HOME}/git-shell-commands \
+    && chmod 755 ${PATH_HOME}/git-shell-commands
 
 #-----------------------------------------------------------------------------
 # Find Fastest Repo & Update Repo
@@ -152,7 +153,7 @@ EXPOSE 22
 #-----------------------------------------------------------------------------
 # Set Volume Docker Workspace Lite
 #-----------------------------------------------------------------------------
-VOLUME [${PATH_WORKSPACE}, "/root"]
+VOLUME [${PATH_HOME}, "/root"]
 
 #-----------------------------------------------------------------------------
 # Finalize (reconfigure)

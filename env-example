@@ -27,7 +27,8 @@ CONSUL_VERSION=0.8.3
 # ==============================================
 #   WORKSPACE-LITE (Environments)
 # ==============================================
-PATH_WORKSPACE=/home/docker
+PATH_HOME=/home/docker
+PATH_WORKSPACE=/home/docker/workspace
 WORKSPACE_PORT=2222
 
 # ==============================================
