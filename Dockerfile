@@ -138,8 +138,8 @@ RUN mkdir -p $HOME/.fonts \
     && cp $HOME/.fonts/PowerlineSymbols.otf /usr/share/fonts/local/PowerlineSymbols.otf \
     && cp $HOME/.fonts/PowerlineSymbols.otf /usr/share/fonts/PowerlineSymbols.otf \
     && cp $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf /etc/fonts/conf.d/10-powerline-symbols.conf \
-    && /usr/bin/fc-cache -vf $HOME/.fonts/ \
-    && /usr/bin/fc-cache -vf /usr/share/fonts
+    && sudo /usr/bin/fc-cache -vf $HOME/.fonts/ \
+    && sudo /usr/bin/fc-cache -vf /usr/share/fonts
 
 #-----------------------------------------------------------------------------
 # Download & Install
@@ -157,12 +157,17 @@ RUN git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git /
 #-----------------------------------------------------------------------------
 COPY ./rootfs/root/colors/24-bit-color.sh /opt/24-bit-color.sh
 RUN chmod a+x /opt/24-bit-color.sh; sync \
-    && ./opt/24-bit-color.sh
+    && sudo /bin/sh /opt/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
 # Cleanup 'root' folder
 #-----------------------------------------------------------------------------
 RUN rm -f /root/*.tar.gz
+
+#-----------------------------------------------------------------------------
+# Set Configuration
+#-----------------------------------------------------------------------------
+COPY rootfs/ /
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
@@ -173,11 +178,6 @@ EXPOSE 22
 # Set Volume Docker Workspace Lite
 #-----------------------------------------------------------------------------
 VOLUME [${PATH_WORKSPACE}]
-
-#-----------------------------------------------------------------------------
-# Finalize (reconfigure)
-#-----------------------------------------------------------------------------
-COPY rootfs/ /
 
 #-----------------------------------------------------------------------------
 # Run Init Docker Container
